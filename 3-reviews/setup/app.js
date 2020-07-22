@@ -76,9 +76,9 @@ const app = {
     return Math.floor(Math.random() * reviews.length);
   },
   addListeners: function () {
-    this.prevBtn.addEventListener('click', this.switchReview.bind(this, 'prev'));
-    this.nextBtn.addEventListener('click', this.switchReview.bind(this, 'next'));
-    this.randomBtn.addEventListener('click', this.displayRandomReview.bind(this));
+    this.prevBtn.addEventListener('click', () => this.switchReview('prev'));
+    this.nextBtn.addEventListener('click', () => this.switchReview('next'));
+    this.randomBtn.addEventListener('click', () => this.displayRandomReview());
   },
   switchReview: function (direction) {
     if (direction == 'prev') --this.reviewIndex;
@@ -86,4 +86,4 @@ const app = {
   },
 };
 
-app.init();
+window.addEventListener('DOMContentLoaded', () => app.init());
