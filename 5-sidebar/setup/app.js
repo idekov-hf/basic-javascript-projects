@@ -1,11 +1,11 @@
+// I attemped to use event delegation: a combination of
+// actions in markup and the “behavior” pattern as described
+// here: https://javascript.info/event-delegation
+
 const sidebar = document.querySelector('.sidebar');
-const toggleSidebar = document.querySelector('.sidebar-toggle');
-const closeSidebar = document.querySelector('.close-btn');
 
-toggleSidebar.addEventListener('click', (_) => {
-  sidebar.classList.toggle('show-sidebar');
-});
-
-closeSidebar.addEventListener('click', (_) => {
-  sidebar.classList.remove('show-sidebar');
+document.addEventListener('click', function (evt) {
+  const action = evt.target.dataset.action;
+  if (!action) return;
+  sidebar.classList[action]('show-sidebar');
 });
